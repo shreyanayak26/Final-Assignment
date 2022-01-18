@@ -71,8 +71,9 @@ def compute_data_choice_2(df):
 
 
 # Application layout
-app.layout = html.Div(children=[ html.H1('US Domestic Airline Flights Performance',
+app.layout = html.Div(children=[html.H1('US Domestic Airline Flights Performance',
                                 style={'textAlign':'center','color':'#503D36','font-size':24}),
+
                                 # TASK1: Add title to the dashboard
                                 # Enter your code below. Make sure you have correct formatting.
     
@@ -89,7 +90,7 @@ app.layout = html.Div(children=[ html.H1('US Domestic Airline Flights Performanc
                                         ),
                                         # TASK2: Add a dropdown
                                         # Enter your code below. Make sure you have correct formatting.
-                                          dcc.Dropdown(id='input-type', 
+                                           dcc.Dropdown(id='input-type', 
                    options=[
                            {'label': 'Yearly Airline Performance Report', 'value': 'OPT1'},
                            {'label': 'Yearly Airline Delay Report', 'value': 'OPT2'}
@@ -141,7 +142,7 @@ app.layout = html.Div(children=[ html.H1('US Domestic Airline Flights Performanc
  Output(component_id='plot2', component_property='children'),
  Output(component_id='plot3', component_property='children'),
  Output(component_id='plot4', component_property='children'),
- Output(component_id='plot5', component_property='children')]
+ Output(component_id='plot5', component_property='children')],
                [Input(component_id='input-type', component_property='value'),
                 Input(component_id='input-year', component_property='value')],
                # REVIEW4: Holding output state till user enters all the form information. In this case, it will be chart type and year
@@ -166,7 +167,6 @@ def get_graph(chart, year, children1, children2, c3, c4, c5):
             # Enter your code below. Make sure you have correct formatting.
             import plotly.express as px
             line_fig = px.line(line_data, x='month', y='AirTime', color='Reporting_Airline', title='Average monthly flight time (minutes) by airline')
-
             
             # Percentage of diverted airport landings per reporting airline
             pie_fig = px.pie(div_data, values='Flights', names='Reporting_Airline', title='% of flights by reporting airline')
@@ -185,7 +185,7 @@ def get_graph(chart, year, children1, children2, c3, c4, c5):
             
             # TASK6: Number of flights flying to each state from each reporting airline
             # Enter your code below. Make sure you have correct formatting.
-            import plotly.express as px
+        
             tree_fig = px.treemap(tree_data, path=['DestState', 'Reporting_Airline'], 
                       values='Flights',
                       color='Flights',
@@ -225,3 +225,11 @@ def get_graph(chart, year, children1, children2, c3, c4, c5):
 if __name__ == '__main__':
     app.run_server()
 
+
+
+
+
+
+           
+            
+          
